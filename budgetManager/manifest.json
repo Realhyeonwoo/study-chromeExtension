@@ -13,6 +13,16 @@
     "default_popup": "index.html"
   },
 
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Ctrl+Shift+F"
+      },
+      "description": "Opens"
+    }
+  },
+
   "options_page": "options.html",
 
   "background": {
