@@ -20,7 +20,15 @@
 
 ## #3 pageFontStyle
 
+    - page_action / background / permission
+    - content_scripts
+    - runtime.sendMessage / tabs.onMessage.addListener
+    - tabs.sendMessage / tabs.onMessage.addListener
+
 ## #4 wikit
+
+    - contextMenus
+    - Regx
 
 ## #5 speakIt
 
