@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <div id="wrap"> -->
+    <div id="timeBtns" class="timeBtns">
+      <button id="btn10min">10min</button>
+      <button id="btn30min">30min</button>
+      <button id="btn60min">1hour</button>
+    </div>
+    <div id="timeArea" class="timeArea">
+      <input type="text" id="hourText" maxlength="2" placeholder="00" />
+      &nbsp; <span>:</span> &nbsp;
+      <input type="text" id="minuteText" maxlength="2" placeholder="00" />
+      &nbsp; <span>:</span> &nbsp;
+      <input type="text" id="secondText" maxlength="2" placeholder="00" />
+    </div>
+    <div id="controlBtns" class="controlBtns">
+      <button id="startBtn">START</button>
+      <button id="stopBtn" class="hide">STOP</button>
+      <button id="resetBtn">RESET</button>
+    </div>
+    <div id="controlAlaram" class="controlAlaram">
+      <input type="checkbox" id="b" checked="true" />
+      <label for="b">USE ALARM</label>
+    </div>
+    <!-- </div> -->
+    <script src="setVariable.js"></script>
+    <script src="setTime.js"></script>
+    <script src="controlBtns.js"></script>
+    <script src="popup.js"></script>
+    <script src="timer.js"></script>
+  </body>
+</html>

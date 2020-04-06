@@ -48,7 +48,7 @@
 
   - Can set time (text box)
   - Exist set time Buttons (10 / 30 / 60 minutes)
-  - Exist control Buttons (Start, Stop, Reset)
+  - Exist control Buttons (Start, Reset)
 
 - RUNNING
 
