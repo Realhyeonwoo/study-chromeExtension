@@ -10,23 +10,29 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         chrome.runtime.sendMessage({ todo: "finishTime" });
         // alert("THE END");
 
+        // 종료 이미지 출력
         chrome.windows.create({
           url:
             "https://images.unsplash.com/photo-1522292923399-bf8ddbd6e4e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
           type: "popup",
-          top: screen.availHeight / 3,
-          left: screen.availWidth / 3,
-          width: screen.availWidth / 3,
-          height: screen.availHeight / 2
+          top: screen.availHeight,
+          left: screen.availWidth,
+          width: screen.availWidth,
+          height: screen.availHeight,
         });
 
         chrome.storage.sync.set({
           hour: "0",
           minute: "0",
           second: "0",
-          isStop: "false"
+          isStop: "false",
         });
-        // 종료 이미지 출력
+        chrome.browserAction.setBadgeBackgroundColor({
+          color: "green",
+        });
+        chrome.browserAction.setBadgeText({
+          text: "END",
+        });
       } else {
         nowTime--;
 
@@ -39,10 +45,29 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           todo: "runningTime",
           hour,
           minute,
-          second
+          second,
         });
 
         nowTime = hour * 60 * 60 + minute * 60 + second;
+
+        chrome.browserAction.setBadgeBackgroundColor({
+          color: "red",
+        });
+        if (hour * 60 + minute >= 100) {
+          chrome.browserAction.setBadgeText({
+            text: `${hour < 10 ? "0" + hour : hour}:${
+              minute < 10 ? "0" + minute : minute
+            }`,
+          });
+        } else {
+          chrome.browserAction.setBadgeText({
+            text: `${
+              hour * 60 + minute < 10
+                ? "0" + (hour * 60 + minute)
+                : hour * 60 + minute
+            }:${second < 10 ? "0" + second : second}`,
+          });
+        }
       }
     }, 1000);
   } else if (request.todo === "stopTimer") {

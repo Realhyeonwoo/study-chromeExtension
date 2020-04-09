@@ -4,6 +4,8 @@
 
 - I just need a timer for checking time when I solve algorithm problems
 
+- Fail to upload on Chrmoe Extension App Store (Because of google don't allow to upload app anymore by 2022)
+
 <hr/>
 
 ## #1 helloWorld
@@ -58,6 +60,5 @@
   - Time text box is locked
 
 - FINISH
-  - start turning on alarm sound
-  - Text color change or Input image in webPage
+  - Reveal image in webPage
   - Go to Init Status

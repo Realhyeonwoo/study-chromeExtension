@@ -24,13 +24,19 @@ startBtn.onclick = () => {
   const h = hourText.value == "" ? 0 : parseInt(hourText.value);
   const m = minuteText.value == "" ? 0 : parseInt(minuteText.value);
   const s = secondText.value == "" ? 0 : parseInt(secondText.value);
-  const nowTime = h * 60 * 60 + m * 60 + s;
-  if (nowTime != 0) {
-    changeToStartUI();
-    chrome.runtime.sendMessage({
-      todo: "startTimer",
-      nowTime
-    });
+  if (isNaN(h) || isNaN(m) || isNaN(s)) {
+    hourText.value = "";
+    minuteText.value = "";
+    secondText.value = "";
+  } else {
+    const nowTime = h * 60 * 60 + m * 60 + s;
+    if (nowTime != 0) {
+      changeToStartUI();
+      chrome.runtime.sendMessage({
+        todo: "startTimer",
+        nowTime,
+      });
+    }
   }
 };
 
@@ -42,7 +48,7 @@ stopBtn.onclick = () => {
   const nowTime = h * 60 * 60 + m * 60 + s;
   chrome.runtime.sendMessage({
     todo: "stopTimer",
-    nowTime
+    nowTime,
   });
 };
 
@@ -59,9 +65,15 @@ resetBtn.onclick = () => {
     secondText.value = "";
 
     chrome.runtime.sendMessage({
-      todo: "stopTimer"
+      todo: "stopTimer",
     });
     chrome.storage.sync.set({ isStop: "false" });
+    chrome.browserAction.setBadgeBackgroundColor({
+      color: "green",
+    });
+    chrome.browserAction.setBadgeText({
+      text: "0",
+    });
   }
 };
 

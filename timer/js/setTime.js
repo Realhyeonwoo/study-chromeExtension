@@ -54,13 +54,15 @@ btn60min.onclick = () => {
 
 // TEXT FUNCTION
 // 숫자만 입력하게 하는 기능
-const numkeyCheck = e => (e.keyCode >= 48 && e.keyCode <= 57 ? true : false);
+const numkeyCheck = (e) => (e.keyCode >= 48 && e.keyCode <= 57 ? true : false);
+
 hourText.onkeypress = numkeyCheck;
 minuteText.onkeypress = numkeyCheck;
 secondText.onkeypress = numkeyCheck;
 // 빈칸 0으로 자동 입력
-hourText.onblur = () =>
+hourText.onblur = () => {
   setTimeText("hour", hourText.value == "" ? 0 : hourText.value);
+};
 minuteText.onblur = () =>
   setTimeText("minute", minuteText.value == "" ? 0 : minuteText.value);
 secondText.onblur = () =>

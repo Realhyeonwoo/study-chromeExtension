@@ -9,11 +9,17 @@ window.onload = () => {
   const stopBtn = document.getElementById("stopBtn");
   const resetBtn = document.getElementById("resetBtn");
 
-  chrome.storage.sync.get(["hour", "minute", "second", "isStop"], info => {
-    // alert(info.hour + ":" + info.minute + ":" + info.second);
-    hourText.value = info.hour == undefined ? "" : info.hour;
-    minuteText.value = info.minute == undefined ? "" : info.minute;
-    secondText.value = info.second == undefined ? "" : info.second;
+  chrome.storage.sync.get(["hour", "minute", "second", "isStop"], (info) => {
+    hourText.value =
+      info.hour == undefined || isNaN(parseInt(info.hour)) ? "" : info.hour;
+    minuteText.value =
+      info.minute == undefined || isNaN(parseInt(info.minute))
+        ? ""
+        : info.minute;
+    secondText.value =
+      info.second == undefined || isNaN(parseInt(info.second))
+        ? ""
+        : info.second;
 
     setTimeText("hour", hourText.value);
     setTimeText("minute", minuteText.value);
